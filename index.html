@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Soni & Me – Forever ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    font-family:'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    text-align:center;
+}
+
+.card{
+    background:rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    padding:30px;
+    border-radius:25px;
+    width:90%;
+    max-width:440px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    color:#4a1c1c;
+    animation:fadeIn 2s ease;
+}
+
+h1{ font-size:30px; }
+p{ font-size:16px; line-height:1.7; }
+
+button{
+    margin-top:20px;
+    padding:12px 28px;
+    font-size:16px;
+    border:none;
+    border-radius:30px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+button:hover{ transform:scale(1.08); }
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:22px;
+    animation:float 6s linear infinite;
+}
+.firework{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:white;
+    animation:explode 1s ease-out forwards;
+}
+.glow{
+    animation:glow 1.5s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #ff4d6d; }
+    to{ text-shadow:0 0 35px #ff004c; }
+}
+@keyframes float{
+    to{ transform:translateY(-110vh); opacity:0; }
+}
+@keyframes explode{
+    to{ transform:scale(18); opacity:0; }
+}
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.9);}
+    to{opacity:1; transform:scale(1);}
+}
+
+#s2,#s3,#s4,#s5{display:none;}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="s1">
+    <h1>Hey Meri Soni ❤️</h1>
+    <p>
+        Aaj ka din thoda mushkil tha…  
+        lekin ab ye pal sirf tumhara hai 🌸
+    </p>
+    <button onclick="go1()">Tap Slowly 💖</button>
+</div>
+
+<div class="card" id="s2">
+    <h1>💞 Meri Jaan 💞</h1>
+    <p>
+        Tumhari ek smile  
+        meri saari thakan mita deti hai ❤️
+    </p>
+</div>
+
+<div class="card" id="s3">
+    <h1>🎆 I Love You Soni 🎆</h1>
+    <p>
+        Tum meri dua ho,  
+        meri zindagi ho 💖
+    </p>
+    <button onclick="proposal()">One Last Tap 💍</button>
+</div>
+
+<div class="card" id="s4">
+    <h1 class="glow">💍 Soni 💍</h1>
+    <p>
+        Har janam… har haal me…  
+        <br><br>
+        <b>sirf tumhara saath chahiye ❤️</b>
+    </p>
+</div>
+
+<div class="card" id="s5">
+    <h1 class="glow">🎉 SHE SAID YES 🎉</h1>
+    <p>
+        Soni & Me — Forever 💍💖  
+        <br><br>
+        Ek chhota sa khat tumhare liye 💌
+    </p>
+    <button onclick="downloadLetter()">Download Love Letter 💌</button>
+</div>
+
+<script>
+function go1(){
+    s1.style.display="none";
+    s2.style.display="block";
+    hearts();
+    setTimeout(()=>{
+        s2.style.display="none";
+        s3.style.display="block";
+        fireworks();
+    },4000);
+}
+
+function proposal(){
+    s3.style.display="none";
+    s4.style.display="block";
+    fireworks();
+    setTimeout(()=>{
+        s4.style.display="none";
+        s5.style.display="block";
+        fireworks();
+    },4000);
+}
+
+function hearts(){
+    setInterval(()=>{
+        let h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML="❤️";
+        h.style.left=Math.random()*100+"vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),6000);
+    },350);
+}
+
+function fireworks(){
+    setInterval(()=>{
+        let f=document.createElement("div");
+        f.className="firework";
+        f.style.left=Math.random()*100+"vw";
+        f.style.top=Math.random()*100+"vh";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    },250);
+}
+
+function downloadLetter(){
+const text = `
+My Dearest Soni ❤️,
+
+Aaj jab tumne YES kaha,
+meri duniya aur bhi khoobsurat ho gayi.
+
+Tumhari mehnat,
+tumhari thakan,
+tumhari muskaan —
+sab kuch mere liye anmol hai.
+
+Main vaada karta hoon
+har mushkil me tumhara haath thaam kar chalunga,
+har khushi tumhare saath baantunga.
+
+Tum meri wife nahi,
+meri zindagi ho.
+
+Forever Yours,
+❤️ Tumhara ❤️
+`;
+
+const blob = new Blob([text], {type: "text/plain"});
+const link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "Love_Letter_For_Soni.txt";
+link.click();
+}
+</script>
+
+</body>
+</html>
+
+
+
+
